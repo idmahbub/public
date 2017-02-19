@@ -1,0 +1,20 @@
+<?php
+include("cbt_con.php"); 
+if (isset($_GET['Urut'])) {
+	$urut = $_GET['Urut'];
+} else {
+	die ("Error. No Nip Selected! ");	
+}
+$namamapel = $_POST['namamapel'];
+$kodemapel = $_POST['kodemapel'];
+
+$query = "UPDATE cbt_mapel SET XKodeMapel='$namamapel',XNamaMapel='$kodemapel' WHERE Urut='$urut'";
+	$result = mysql_query ($query);
+
+if ($result) {
+header("location:index.php?page=pengaturan_mapel");
+}
+else {
+	echo "proses simpan gagal !.";
+}
+?>
